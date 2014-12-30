@@ -1,0 +1,44 @@
+﻿.carousel-custom-section {
+    margin-bottom: 30px;
+}
+
+.main-custom-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.item {
+    background: #772953;
+    text-align: center;
+    max-height: 460px !important;
+}
+
+h2 {
+    margin: 0;
+    color: #666;
+    padding-top: 90px;
+    font-size: 52px;
+    font-family: "trebuchet ms", sans-serif;
+}
+
+.panel-primary {
+  border-color: #772953;
+}
+.panel-primary > .panel-heading {
+  color: #ffffff;
+  background-color: #772953;
+  border-color: #772953;
+}
+.panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #772953;
+}
+.panel-primary > .panel-heading .badge {
+  color: #772953;
+  background-color: #ffffff;
+}
+.panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #772953;
+}
+.image-max-width{
+    max-width:100%;
+}

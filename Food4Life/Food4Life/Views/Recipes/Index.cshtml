@@ -1,0 +1,126 @@
+﻿@*@model IEnumerable<Food4Life.Models.Recipe>*@
+@model PagedList.IPagedList<Food4Life.Models.Recipe>
+@using PagedList.Mvc;
+@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+
+@{
+    ViewBag.Title = "Recipes";
+}
+
+@{var currentPage = (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber);}
+@if (currentPage == 0)
+{
+    currentPage = 1;
+}
+
+    @*<h3>
+            Recipes
+
+            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span> Create New", null, "Create", "Recipe",
+                routeValues: new { },
+                htmlAttributes: new { @class = "btn btn-sm btn-success pull-right" })
+        </h3>*@
+
+    @{int i = 0;}
+    @{int j = 0;}
+    @if (Model != null && Model.Count() > 0)
+    {
+        if (ViewBag.slider != null && ViewBag.slider.Count > 0)
+        {
+            <div class="carousel-custom-section">
+                <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        @foreach (var item in ViewBag.slider)
+                        {
+                            if (@i == 0)
+                            {
+                                <li data-target="#myCarousel" data-slide-to="@i" class="active"></li>
+                            }
+                            else
+                            {
+                                <li data-target="#myCarousel" data-slide-to="@i"></li>
+                            }
+                            i++;
+                        }
+                    </ol>
+
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        @foreach (var item in ViewBag.slider)
+                        {
+                            if (@j == 0)
+                            {
+                                <div class="active item">
+                                    <a href="@Url.Action("Details", "Recipes", new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page })">
+                                        <img class="slide-image image-max-width" src="@Url.Content(@item.slider_image)" alt="Image">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <h3>@item.title</h3>
+                                        <p>@item.description</p>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <a href="@Url.Action("Details", "Recipes", new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page })">
+                                        <img class="slide-image image-max-width" src="@Url.Content(@item.slider_image)" alt="Image">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <h3>@item.title</h3>
+                                        <p>@item.description</p>
+                                    </div>
+                                </div>
+                            }
+                            j++;
+                        }
+                    </div>
+                    <!-- Carousel nav -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@item.title</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="media">
+                                <p>
+                                    <a href="@Url.Action("Details", "Recipes", new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page })">
+                                        <img src="@Url.Content(@item.thumnail_image)" class="media-object image-max-width" alt="Image">
+                                    </a>
+                                </p>
+                                <div class="media-body">
+                                    <p>@item.description</p>
+                                    <p>@Html.ActionLink("Details", "Details", new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page })</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @*@Html.Label("Page " + currentPage + " of " + Model.PageCount)*@
+        if (Model.PageCount > 1)
+        {
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            No news entries found.
+        </div>
+    }

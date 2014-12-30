@@ -1,0 +1,27 @@
+﻿@model Food4Life.Models.Recipe
+
+@{
+    ViewBag.Title = "Edit " + Model.title;
+}
+
+<h3>Edit @Model.title</h3>
+
+@using (Html.BeginForm("Edit", "Recipes", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.id)
+    @Html.AntiForgeryToken()
+    @Html.Partial("_CommonFields")
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $('[data-entry=wysiwyg]').wysihtml5();
+        });
+    </script>
+}
