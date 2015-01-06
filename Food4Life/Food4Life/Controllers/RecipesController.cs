@@ -108,7 +108,7 @@ namespace Food4Life.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider,instructions,prep_time,cook_time,serves")] Recipe recipe)
         {
             if (Request.IsAuthenticated)
             {
@@ -184,7 +184,7 @@ namespace Food4Life.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider,instructions,prep_time,cook_time,serves")] Recipe recipe)
         {
             if (Request.IsAuthenticated)
             {
@@ -219,6 +219,10 @@ namespace Food4Life.Controllers
                     list.details = recipe.details;
                     list.ratings = recipe.ratings;
                     list.show_slider = recipe.show_slider;
+                    list.instructions = recipe.instructions;
+                    list.prep_time = recipe.prep_time;
+                    list.cook_time = recipe.cook_time;
+                    list.serves = recipe.serves;
                     if (Request.Files[0].FileName != String.Empty)
                     {
                         ProcessImageFile(list);
