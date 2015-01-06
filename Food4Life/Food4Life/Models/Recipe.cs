@@ -30,6 +30,15 @@ namespace Food4Life.Models
         public string thumnail_image { get; set; }
         public string ingredients_thumbnail_image { get; set; }
         public bool show_slider { get; set; }
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string instructions { get; set; }
+        [Required]
+        public Nullable<short> prep_time { get; set; }
+        [Required]
+        public Nullable<short> cook_time { get; set; }
+        [Required]
+        public Nullable<short> serves { get; set; }
     
         public virtual Category Category { get; set; }
     }
