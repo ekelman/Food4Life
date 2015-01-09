@@ -34,9 +34,9 @@
           <Property Name="ingredients_thumbnail_image" Type="varchar" MaxLength="250" />
           <Property Name="show_slider" Type="bit" />
           <Property Name="instructions" Type="nvarchar(max)" />
-          <Property Name="prep_time" Type="smallint" />
-          <Property Name="cook_time" Type="smallint" />
-          <Property Name="serves" Type="smallint" />
+          <Property Name="prep_time" Type="int" />
+          <Property Name="cook_time" Type="int" />
+          <Property Name="serves" Type="int" />
         </EntityType>
         <Association Name="FK_Recipes_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
@@ -94,9 +94,9 @@
           <Property Name="show_slider" Type="Boolean" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Recipes_Categories" FromRole="Recipes" ToRole="Categories" />
           <Property Name="instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="prep_time" Type="Int16" />
-          <Property Name="cook_time" Type="Int16" />
-          <Property Name="serves" Type="Int16" />
+          <Property Name="prep_time" Type="Int32" />
+          <Property Name="cook_time" Type="Int32" />
+          <Property Name="serves" Type="Int32" />
         </EntityType>
         <Association Name="FK_Recipes_Categories">
           <End Role="Categories" Type="Self.Category" Multiplicity="1" />

@@ -32,7 +32,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.details, "Ingredients", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.details, new { htmlAttributes = new { @class = "form-control textareaeditor", @rows = "20" } })
+            @Html.EditorFor(model => model.details, new { htmlAttributes = new { @class = "form-control textareaeditor1", @rows = "20" } })
             @Html.ValidationMessageFor(model => model.details, "Ingredients is required.")
         </div>
     </div>
@@ -40,7 +40,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.details, "Instructions", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.instructions, new { htmlAttributes = new { @class = "form-control textareaeditor", @rows = "20" } })
+            @Html.EditorFor(model => model.instructions, new { htmlAttributes = new { @class = "form-control textareaeditor2", @rows = "20" } })
             @Html.ValidationMessageFor(model => model.instructions, "Instructions is required.")
         </div>
     </div>
@@ -49,7 +49,7 @@
         @Html.LabelFor(model => model.prep_time, "Prep Time", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.TextBoxFor(model => model.prep_time, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.prep_time, "Prep Time is required.")
+            @Html.ValidationMessageFor(model => model.prep_time, "Please enter a valid Number.")
         </div>
     </div>
 
@@ -57,7 +57,7 @@
         @Html.LabelFor(model => model.cook_time, "Cook Time", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.TextBoxFor(model => model.cook_time, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.cook_time, "Cook Time is required.")
+            @Html.ValidationMessageFor(model => model.cook_time, "Please enter a valid Number.")
         </div>
     </div>
 
@@ -65,7 +65,7 @@
         @Html.LabelFor(model => model.serves, "Serves", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.TextBoxFor(model => model.serves, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.serves, "Serves is required.")
+            @Html.ValidationMessageFor(model => model.serves, "Please enter a valid Number.")
         </div>
     </div>
 

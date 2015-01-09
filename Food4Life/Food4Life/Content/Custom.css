@@ -42,3 +42,8 @@ h2 {
 .image-max-width{
     max-width:100%;
 }
+
+.textareaeditor1, .textareaeditor2
+{
+    width: 100% !important;
+}
