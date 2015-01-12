@@ -20,7 +20,26 @@
         </div>
         <div class="panel-body">
             <p>
-                @Html.Raw(Model.details)
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Prep Time <br />@Model.prep_time</th>
+                            <th>Cook Time <br />@Model.cook_time</th>
+                            <th>Total Time <br />@Model.cook_time + @Model.prep_time</th>
+                        </tr>
+                    </thead>
+                </table>
+            </p>
+            <p>
+                <fieldset>
+                    <legend>Ingredients</legend>
+                    <div><img src="@Url.Content(@Model.ingredients_thumbnail_image)" class="image-max-width" alt="Image"></div>
+                    <div>@Html.Raw(Model.details)</div>
+                </fieldset>
+                <fieldset>
+                    <legend>Instructions</legend>
+                    <div>@Html.Raw(Model.instructions)</div>
+                </fieldset>
             </p>
         </div>
     </div>
