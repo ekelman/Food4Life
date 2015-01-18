@@ -84,6 +84,7 @@ namespace Food4Life.Controllers
             }
             GetCategories();
             var materializedreRecipe = recipe.SingleOrDefault();
+            ViewBag.total_cook_time = materializedreRecipe.cook_time + materializedreRecipe.prep_time;
             return View(materializedreRecipe);
         }
 
@@ -229,7 +230,7 @@ namespace Food4Life.Controllers
                     }
                     if (Request.Files[1].FileName != String.Empty)
                     {
-                        list.ingredients_thumbnail_image = ResizeSaveImage(1, 280, 280, list.ingredients_thumbnail_image);
+                        list.ingredients_thumbnail_image = ResizeSaveImage(1, 600, 400, list.ingredients_thumbnail_image);
                     }
                     db.SaveChanges();
 
@@ -286,11 +287,12 @@ namespace Food4Life.Controllers
 
         private void ProcessImageFile(Recipe recipe)
         {
-            recipe.thumnail_image = ResizeSaveImage(0, 280, 280, recipe.thumnail_image);
+            recipe.thumnail_image = ResizeSaveImage(0, 600, 400, recipe.thumnail_image);
             recipe.slider_image = ResizeSaveImage(0, 1248, 460, recipe.slider_image);
             if (Request.Files[1].FileName != String.Empty) 
             {
-                recipe.ingredients_thumbnail_image = ResizeSaveImage(1, 280, 280, recipe.ingredients_thumbnail_image);
+                //recipe.ingredients_thumbnail_image = ResizeSaveImage(1, 280, 280, recipe.ingredients_thumbnail_image);
+                recipe.ingredients_thumbnail_image = ResizeSaveImage(1, 600, 400, recipe.ingredients_thumbnail_image);
             }
         }
 
