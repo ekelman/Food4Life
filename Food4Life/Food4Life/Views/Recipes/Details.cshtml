@@ -4,110 +4,72 @@
     ViewBag.Title = @Model.title;
 }
 
-    @*<h3>@Model.title</h3>*@
+@*<h3>@Model.title</h3>*@
 
 
-    <div class="container main-custom-section">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="thumbnail">
-                    <div class="pull-left"><img src="@Url.Content(@Model.thumnail_image)" class="image-max-width" alt="Image"></div>
-                    <div class="clearfix"></div>
-                    <div class="caption">
-                        <h3>@Model.title</h3>
-                        <p>@Model.description</p>
-                        <hr />
-                        <p>
-                            <div class="well">
-                                <h3>Ingredients</h3><br />
-                                <div><img src="@Url.Content(@Model.ingredients_thumbnail_image)" class="image-max-width" alt="Image"></div>
-                                <br />
-                                <div class="pull-left">@Html.Raw(Model.details)</div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </p>
-                        <hr />
-                        <p>
-                            <div class="well">
-                                <h3>Instructions</h3>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <div class="panel panel-primary">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Prep Time @Model.prep_time min</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <div class="panel panel-primary">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Cook Time @Model.cook_time min</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <div class="panel panel-primary">
-                                            <div class="panel-heading">
-                                                @{ var totalCookTime = ViewBag.total_cook_time; }
-                                                <h3 class="panel-title">Total Time @totalCookTime min</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Serves @Model.serves</h3>
-                                            </div>
+<div class="container main-custom-section">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="thumbnail">
+                <div class="pull-left"><img src="@Url.Content(@Model.thumnail_image)" class="image-max-width" alt="Image"></div>
+                <div class="clearfix"></div>
+                <div class="caption">
+                    <h3>@Model.title</h3>
+                    <p>@Model.description</p>
+                    <hr />
+                    <p>
+                        <div class="well">
+                            <h3>Ingredients</h3><br />
+                            <div><img src="@Url.Content(@Model.ingredients_thumbnail_image)" class="image-max-width" alt="Image"></div>
+                            <br />
+                            <div class="pull-left">@Html.Raw(Model.details)</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </p>
+                    <hr />
+                    <p>
+                        <div class="well">
+                            <h3>Instructions</h3>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Prep Time @Model.prep_time min</h3>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                @Html.Raw(Model.instructions)
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Cook Time @Model.cook_time min</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            @{ var totalCookTime = ViewBag.total_cook_time; }
+                                            <h3 class="panel-title">Total Time @totalCookTime min</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Serves @Model.serves</h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </p>
-                    </div>
+                            <div class="clearfix"></div>
+                            @Html.Raw(Model.instructions)
+                        </div>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-
-    @*<div class="panel panel-default main-custom-section">
-        <div class="panel-body">
-            <div class="media">
-                <a href="#" class="pull-left">
-                    <img src="@Url.Content(@Model.thumnail_image)" class="image-max-width" alt="Image">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">@Model.title</h4>
-                    <p>@Model.description</p>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <p>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Prep Time <br />@Model.prep_time</th>
-                            <th>Cook Time <br />@Model.cook_time</th>
-                            <th>Total Time <br />@Model.cook_time + @Model.prep_time</th>
-                        </tr>
-                    </thead>
-                </table>
-            </p>
-            <p>
-                <fieldset>
-                    <legend>Ingredients</legend>
-                    <div><img src="@Url.Content(@Model.ingredients_thumbnail_image)" class="image-max-width" alt="Image"></div>
-                    <div>@Html.Raw(Model.details)</div>
-                </fieldset>
-                <fieldset>
-                    <legend>Instructions</legend>
-                    <div>@Html.Raw(Model.instructions)</div>
-                </fieldset>
-            </p>
-        </div>
-    </div>*@
+</div>
 <p>
     @if (Request.IsAuthenticated)
     {

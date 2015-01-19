@@ -12,42 +12,42 @@
 namespace Food4Life.Models
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
-public partial class Recipe
-{
-    public int id { get; set; }
-    [Required]
-    public int category_id { get; set; }
-    [Required]
-    public string title { get; set; }
-    [Required]
-    public string description { get; set; }
-    [Required]
-    [DataType(DataType.MultilineText)]
-    public string details { get; set; }
-    public Nullable<int> ratings { get; set; }
-    public string slider_image { get; set; }
-    public string thumnail_image { get; set; }
-    public string ingredients_thumbnail_image { get; set; }
-    public bool show_slider { get; set; }
-    [Required]
-    [DataType(DataType.MultilineText)]
-    public string instructions { get; set; }
-    [Required]
-    [Range(0, int.MaxValue)]
-    public int prep_time { get; set; }
-    [Required]
-    [Range(0, int.MaxValue)]
-    public int cook_time { get; set; }
-    [Required]
-    [Range(0, int.MaxValue)]
-    public int serves { get; set; }
 
-    public virtual Category Category { get; set; }
+    public partial class Recipe
+    {
+        public int id { get; set; }
+        [Required]
+        public int category_id { get; set; }
+        [Required]
+        public string title { get; set; }
+        [Required]
+        public string description { get; set; }
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string details { get; set; }
+        public Nullable<int> ratings { get; set; }
+        public string slider_image { get; set; }
+        public string thumnail_image { get; set; }
+        public string ingredients_thumbnail_image { get; set; }
+        public bool show_slider { get; set; }
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string instructions { get; set; }
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int prep_time { get; set; }
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int cook_time { get; set; }
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int serves { get; set; }
 
-}
+        public virtual Category Category { get; set; }
+
+    }
 
 }
