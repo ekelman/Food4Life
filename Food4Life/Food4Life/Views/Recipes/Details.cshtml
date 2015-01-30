@@ -20,8 +20,11 @@
                     <p>
                         <div class="well">
                             <h3>Ingredients</h3><br />
-                            <div><img src="@Url.Content(@Model.ingredients_thumbnail_image)" class="image-max-width" alt="Image"></div>
-                            <br />
+                            @if (Model.ingredients_thumbnail_image != null)
+                            {
+                                <div><img src="@Url.Content(@Model.ingredients_thumbnail_image)" class="image-max-width" alt="Image"></div>
+                                <br />
+                            }
                             <div class="pull-left">@Html.Raw(Model.details)</div>
                             <div class="clearfix"></div>
                         </div>
