@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\SBG225\Desktop\Food4Life\Food4Life\Food4Life\Models\superhealthyeats.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Alla\Desktop\Food4Life\Food4Life\Food4Life\Models\superhealthyeats.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
