@@ -16,7 +16,7 @@
         @Html.LabelFor(model => model.title, "Title", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.TextBoxFor(model => model.title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.title, "Title is required")
+            @Html.ValidationMessageFor(model => model.title, "Title is invalid or required")
         </div>
     </div>
 
@@ -126,6 +126,8 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-default" />
+            @Html.Raw(ViewBag.message)
         </div>
     </div>
+
 </fieldset>

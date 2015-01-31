@@ -187,63 +187,72 @@ namespace Food4Life.Controllers
         [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider,instructions,prep_time,cook_time,serves")] Recipe recipe)
         {
-            if (Request.IsAuthenticated)
+            try
             {
-                //Validate description
-                ModelState.Remove("Description");
-                if (recipe.description == null)
+                if (Request.IsAuthenticated)
                 {
-                    ModelState.AddModelError("Description", "Description is required.");
-                    ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
-                    GetCategories();
-                    return View(recipe);
-                }
-                var recipeCheck = db.Recipes.Find(recipe.id);
-                if (recipeCheck.description != recipe.description)
-                {
-                    var recipeCheckDup = db.Recipes.Where(d => d.description == recipe.description);
-                    if (recipeCheckDup.Count() != 0)
+                    //Validate description
+                    ModelState.Remove("Description");
+                    if (recipe.description == null)
                     {
-                        ModelState.AddModelError("Description", "Item alreday exists.");
+                        ModelState.AddModelError("Description", "Description is required.");
                         ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
                         GetCategories();
                         return View(recipe);
                     }
-                }
-
-                if (ModelState.IsValid)
-                {
-                    var list = db.Recipes.Find(recipe.id);
-                    list.category_id = recipe.category_id;
-                    list.title = recipe.title;
-                    list.description = recipe.description;
-                    list.details = recipe.details;
-                    list.ratings = recipe.ratings;
-                    list.show_slider = recipe.show_slider;
-                    list.instructions = recipe.instructions;
-                    list.prep_time = recipe.prep_time;
-                    list.cook_time = recipe.cook_time;
-                    list.serves = recipe.serves;
-                    if (Request.Files[0].FileName != String.Empty)
+                    var recipeCheck = db.Recipes.Find(recipe.id);
+                    if (recipeCheck.description != recipe.description)
                     {
-                        ProcessImageFile(list);
+                        var recipeCheckDup = db.Recipes.Where(d => d.description == recipe.description);
+                        if (recipeCheckDup.Count() != 0)
+                        {
+                            ModelState.AddModelError("Description", "Item alreday exists.");
+                            ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
+                            GetCategories();
+                            return View(recipe);
+                        }
                     }
-                    if (Request.Files[1].FileName != String.Empty)
-                    {
-                        list.ingredients_thumbnail_image = ResizeSaveImage(1, 600, 400, list.ingredients_thumbnail_image);
-                    }
-                    db.SaveChanges();
 
+                    if (ModelState.IsValid)
+                    {
+                        var list = db.Recipes.Find(recipe.id);
+                        list.category_id = recipe.category_id;
+                        list.title = recipe.title;
+                        list.description = recipe.description;
+                        list.details = recipe.details;
+                        list.ratings = recipe.ratings;
+                        list.show_slider = recipe.show_slider;
+                        list.instructions = recipe.instructions;
+                        list.prep_time = recipe.prep_time;
+                        list.cook_time = recipe.cook_time;
+                        list.serves = recipe.serves;
+                        if (Request.Files[0].FileName != String.Empty)
+                        {
+                            ProcessImageFile(list);
+                        }
+                        if (Request.Files[1].FileName != String.Empty)
+                        {
+                            list.ingredients_thumbnail_image = ResizeSaveImage(1, 600, 400, list.ingredients_thumbnail_image);
+                        }
+                        db.SaveChanges();
+
+                        GetCategories();
+                        ViewBag.message = "<p class=\"text-danger\">Successfully saved item.</p>";
+                        //return RedirectToAction("Index");
+                    }
+                    ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
                     GetCategories();
-                    return RedirectToAction("Index");
+                    return View(recipe);
                 }
-                ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
-                GetCategories();
-                return View(recipe);
+                else
+                {
+                    return RedirectToAction("Index", "Recipes");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("Index", "Recipes");
+                ViewBag.message = "<p class=\"text-success\">Error, could not save.</p>";
+                return View(recipe);
             }
         }
 

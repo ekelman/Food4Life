@@ -104,7 +104,15 @@
                                 </p>
                                 <div class="media-body">
                                     <p>@item.description</p>
-                                    <p>@Html.ActionLink("Details", "Details", new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page })</p>
+                                    @*<p>@Html.ActionLink("Details", "Details", new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page })</p>*@
+                                    <p>
+                                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-circle-arrow-right'></span> Details",
+                                        null,
+                                        "Details",
+                                        "Recipes",
+                                        routeValues: new { description = item.description, category = ViewBag.categoryName, page = ViewBag.page },
+                                        htmlAttributes: new { @class = "btn btn-sm btn-default" })
+                                    </p>
                                 </div>
                             </div>
                         </div>

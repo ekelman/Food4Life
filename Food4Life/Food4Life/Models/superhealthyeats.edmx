@@ -26,7 +26,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="50" />
-          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar(max)" />
           <Property Name="details" Type="nvarchar(max)" />
           <Property Name="ratings" Type="int" />
           <Property Name="slider_image" Type="varchar" MaxLength="250" />
@@ -85,7 +85,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ratings" Type="Int32" />
           <Property Name="slider_image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />

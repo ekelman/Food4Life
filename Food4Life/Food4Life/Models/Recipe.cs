@@ -22,6 +22,7 @@ namespace Food4Life.Models
         [Required]
         public int category_id { get; set; }
         [Required]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Invalid Length")]
         public string title { get; set; }
         [Required]
         public string description { get; set; }
