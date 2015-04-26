@@ -19,7 +19,7 @@ namespace Food4Life.Controllers
     public class RecipesController : Controller
     {
         private superhealthyeatsEntities db = new superhealthyeatsEntities();
-        int pageSize = 10;
+        int pageSize = 12;
 
         // GET: /Recipe/
         //[Route("{category:maxlength(50)?}")]
