@@ -35,7 +35,7 @@ namespace Food4Life.Controllers
         private ActionResult GetRecipes(int? page, string category)
         {
             int pageNumber = (page ?? 1);
-            ViewBag.slider = db.Recipes.OrderByDescending(m => m.id).Take(3).Where(s => s.show_slider == true).ToList();
+            ViewBag.slider = db.Recipes.OrderByDescending(m => m.id).Where(s => s.show_slider == true).Take(3).ToList();
             ViewBag.categoryName = category;
             ViewBag.page = page;
             var recipes = db.Recipes.Include(r => r.Category).OrderByDescending(m => m.id);
