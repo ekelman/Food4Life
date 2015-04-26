@@ -8,6 +8,13 @@
 }
 
 @{var currentPage = (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber);}
+
+@section Meta
+{
+    <meta name="description" content="Free glutein-free and gaps recepies" />
+    <meta name="keywords" content="glutein free,gf,gaps diet">
+}
+
 @if (currentPage == 0)
 {
     currentPage = 1;

@@ -1,5 +1,12 @@
 ﻿@model Food4Life.Models.Recipe
 
+@{string metaDesc = @Model.description;}
+@section Meta
+{
+    <meta name="description" content= "@metaDesc" >
+    <meta name="keywords" content="glutein free,gf,gaps diet">
+}
+
 @{
     ViewBag.Title = @Model.title;
 }
