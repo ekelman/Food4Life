@@ -7,3 +7,10 @@ Food4Life/Food4Life/obj/Debug/Food4Life.csproj.FileListAbsolute.txt
 Food4Life/Food4Life/obj/Debug/Food4Life.dll
 Food4Life/Food4Life/obj/Debug/Food4Life.pdb
 Food4Life/Food4Life/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.cache
+Food4Life/Food4Life/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Food4Life/Food4Life/obj/Debug/edmxResourcesToEmbed/Models/superhealthyeats.ssdl
+Food4Life/Food4Life/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+Food4Life/Food4Life/obj/Release/*.*
+Food4Life/Food4Life/obj/Release/Package/PackageTmp/bin/Food4Life.dll
+Food4Life/Food4Life/obj/Release/Package/PackageTmp/Views/Recipes/*.*
