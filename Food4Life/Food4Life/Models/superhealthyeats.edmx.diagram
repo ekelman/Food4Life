@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b33098c706f4e5aafee2d30974838a1" Name="Diagram1">
+      <Diagram DiagramId="a7c9e44b909149ed9866907493930461" Name="Diagram1">
         <EntityTypeShape EntityType="superhealthyeatsModel.AboutPage" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="superhealthyeatsModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="superhealthyeatsModel.Category" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="superhealthyeatsModel.Recipe" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="superhealthyeatsModel.FK_Recipes_Categories" ManuallyRouted="false" />
       </Diagram>

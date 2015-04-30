@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="superhealthyeatsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="superhealthyeatsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AboutPage">
           <Key>
             <PropertyRef Name="id" />
@@ -59,10 +59,11 @@
             <End Role="Recipes" EntitySet="Recipes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="superhealthyeatsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="superhealthyeatsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AboutPage">
           <Key>
             <PropertyRef Name="id" />
@@ -92,11 +93,11 @@
           <Property Name="thumnail_image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="ingredients_thumbnail_image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="show_slider" Type="Boolean" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Recipes_Categories" FromRole="Recipes" ToRole="Categories" />
           <Property Name="instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="prep_time" Type="Int32" />
           <Property Name="cook_time" Type="Int32" />
           <Property Name="serves" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Recipes_Categories" FromRole="Recipes" ToRole="Categories" />
         </EntityType>
         <Association Name="FK_Recipes_Categories">
           <End Role="Categories" Type="Self.Category" Multiplicity="1" />
@@ -144,10 +145,6 @@
           <EntitySetMapping Name="Recipes">
             <EntityTypeMapping TypeName="superhealthyeatsModel.Recipe">
               <MappingFragment StoreEntitySet="Recipes">
-                <ScalarProperty Name="serves" ColumnName="serves" />
-                <ScalarProperty Name="cook_time" ColumnName="cook_time" />
-                <ScalarProperty Name="prep_time" ColumnName="prep_time" />
-                <ScalarProperty Name="instructions" ColumnName="instructions" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -158,6 +155,10 @@
                 <ScalarProperty Name="thumnail_image" ColumnName="thumnail_image" />
                 <ScalarProperty Name="ingredients_thumbnail_image" ColumnName="ingredients_thumbnail_image" />
                 <ScalarProperty Name="show_slider" ColumnName="show_slider" />
+                <ScalarProperty Name="instructions" ColumnName="instructions" />
+                <ScalarProperty Name="prep_time" ColumnName="prep_time" />
+                <ScalarProperty Name="cook_time" ColumnName="cook_time" />
+                <ScalarProperty Name="serves" ColumnName="serves" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

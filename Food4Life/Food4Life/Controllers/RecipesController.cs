@@ -111,46 +111,56 @@ namespace Food4Life.Controllers
         [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider,instructions,prep_time,cook_time,serves")] Recipe recipe)
         {
-            if (Request.IsAuthenticated)
+            try
             {
-                //Validate description
-                ModelState.Remove("Description");
-                if (recipe.description == null)
+                if (Request.IsAuthenticated)
                 {
-                    ModelState.AddModelError("Description", "Description is required.");
-                    ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
-                    GetCategories();
-                    return View(recipe);
-                }
-                var recipeCheck = db.Recipes.Where(d => d.description == recipe.description);
-                if (recipeCheck.Count() != 0)
-                {
-                    ModelState.AddModelError("Description", "Item alreday exists.");
-                    ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
-                    GetCategories();
-                    return View(recipe);
-                }
+                    //Validate description
+                    ModelState.Remove("Description");
+                    if (recipe.description == null)
+                    {
+                        ModelState.AddModelError("Description", "Description is required.");
+                        ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
+                        GetCategories();
+                        return View(recipe);
+                    }
+                    var recipeCheck = db.Recipes.Where(d => d.description == recipe.description);
+                    if (recipeCheck.Count() != 0)
+                    {
+                        ModelState.AddModelError("Description", "Item alreday exists.");
+                        ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
+                        GetCategories();
+                        return View(recipe);
+                    }
 
-                if (ModelState.IsValid && Request.Files[0].FileName != String.Empty)
-                {
-                    ProcessImageFile(recipe);
-                    recipe.details = recipe.details.Replace("&nbsp;", " ");
-                    db.Recipes.Add(recipe);
-                    db.SaveChanges();
+                    if (ModelState.IsValid && Request.Files[0].FileName != String.Empty)
+                    {
+                        ProcessImageFile(recipe);
+                        recipe.details = recipe.details.Replace("&nbsp;", " ");
+                        db.Recipes.Add(recipe);
+                        db.SaveChanges();
+                        GetCategories();
+                        return RedirectToAction("Index");
+                    }
+                    if (Request.Files[0].FileName == String.Empty)
+                    {
+                        ModelState.AddModelError("ErrorImage", "Image is required.");
+                    }
+                    ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
                     GetCategories();
-                    return RedirectToAction("Index");
+                    return View(recipe);
                 }
-                if (Request.Files[0].FileName == String.Empty)
+                else
                 {
-                    ModelState.AddModelError("ErrorImage", "Image is required.");
+                    return RedirectToAction("Index", "Recipes");
                 }
+            }
+            catch (Exception ex)
+            {
                 ViewBag.category_id_list = new SelectList(db.Categories, "id", "name", recipe.category_id);
                 GetCategories();
+                ViewBag.message = "<p class=\"text-danger\">" + ex.Message.ToString() + "</p>";
                 return View(recipe);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Recipes");
             }
         }
 

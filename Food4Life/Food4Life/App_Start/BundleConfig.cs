@@ -21,11 +21,13 @@ namespace Food4Life
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-select.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap_united.css",
                       "~/Content/Site.css",
+                      "~/Content/bootstrap-select.css",
                       "~/Content/Custom.css"));
 
             bundles.Add(new ScriptBundle("~/Scripts/wysiwyg").Include(

@@ -7,6 +7,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.category_id, "Category", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            @*@Html.ListBoxFor(model => model.category_id, ViewBag.category_id_list as SelectList, new {  @id = "CategoryId", @class = "selectpicker", @multiple = "true" })*@
             @Html.DropDownListFor(model => model.category_id, ViewBag.category_id_list as SelectList, "Select", new { @id = "CategoryId", @class = "form-control" })
             @Html.ValidationMessageFor(model => model.category_id, "Category is required.")
         </div>
