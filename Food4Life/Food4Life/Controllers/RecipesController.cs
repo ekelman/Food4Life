@@ -109,7 +109,7 @@ namespace Food4Life.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider,instructions,prep_time,cook_time,serves")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "id,category_id,title,description,details,ratings,slider_image,thumnail_image,ingredients_thumbnail_image,show_slider,instructions,prep_time,cook_time,serves")] Recipe recipe, int[] category_id)
         {
             try
             {
